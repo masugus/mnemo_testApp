@@ -1,0 +1,123 @@
+<div class="l-login__background">
+  <img
+    src="../../../../../assets/images/login/fondo.jpg"
+    alt="fondologin"
+    sizes="100vw"
+    class="image-14"
+  />
+
+  <div class="l-login__panel">
+    <div class="l-login__form w-form">
+      <form
+        (keyup.enter)="login()"
+        (ngSubmit)="login()"
+        [formGroup]="loginForm"
+        novalidate
+        id="email-form"
+        name="email-form"
+        data-name="Email Form"
+        class="l-login__form-container"
+      >
+        <div class="l-login__form_image">
+          <img src="../../../../../assets/images/login/logo.jpg" alt="" />
+        </div>
+        <div class="l-login__form_input margin-top-32">
+          <div class="div-block-15 padding-top-10">
+            <label for="name" translate class="font-size-xsmall">
+              <img
+                src="../../../../../assets/images/login/icons/mail_outline-black-18dp.svg"
+                alt=""
+                class="image-13 cursor-pointer"
+              />
+            </label>
+            <input
+              [ngClass]="{ shake: existsError }"
+              type="text"
+              formControlName="username"
+              autocomplete="username"
+              class="a-input__medium w-input username"
+              maxlength="256"
+              name="name"
+              translate
+              data-name="name"
+              [placeholder]="'Username'"
+              id="name"
+            />
+          </div>
+          <small
+          [hidden]="
+            loginForm.controls.username.valid ||
+            loginForm.controls.username.untouched
+          "
+          class="text-danger"
+          translate
+          >El usuario debe ser un email</small
+        >
+
+          <div class="div-block-15">
+            <label for="name" translate class="font-size-xsmall">
+              <img
+                src="../../../../../assets/images/login/icons/lock-black-18dp.svg"
+                alt=""
+                class="image-13 cursor-pointer"
+              />
+            </label>
+            <input
+              [ngClass]="{ shake: existsError }"
+              class="a-input__medium password w-input"
+              [type]="viewPass ? 'text' : 'password'"
+              formControlName="password"
+              autocomplete="current-password"
+              maxlength="256"
+              name="email"
+              translate
+              data-name="password"
+              [placeholder]="'Password'"
+              id="password"
+              required=""
+            />
+
+            <div class="div-block-16">
+              <img
+                src="../../../../assets/images/login/hide.svg"
+                alt=""
+                class="image-13 cursor-pointer"
+                (click)="viewPass = !viewPass"
+              />
+            </div>
+          </div>
+          <small
+          [hidden]="
+            loginForm.controls.password.valid ||
+            loginForm.controls.password.untouched
+          "
+          class="text-danger"
+          translate
+          >La contraseña debe tener mínimo 5 caracteres</small
+        >
+          <div class="form-check padding-bottom-16">
+            <label class="form-check-label">
+              <mat-slide-toggle
+                formControlName="remember"
+                name="rememberme"
+                translate
+                required
+                >Remember me</mat-slide-toggle
+              >
+
+            </label>
+          </div>
+        </div>
+
+        <div class="l-xsmall display-flex w-clearfix">
+          <a
+            translate
+            (click)="login()"
+            class="a__button-primary login w-button"
+            >Login</a
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
